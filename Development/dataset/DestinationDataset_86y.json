@@ -1,0 +1,36 @@
+{
+	"name": "DestinationDataset_86y",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlMI1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlMITable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "Trandate",
+				"type": "datetime2",
+				"precision": 255,
+				"scale": 7
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 28,
+				"scale": 14
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AzureTestSales"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

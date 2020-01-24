@@ -1,0 +1,32 @@
+{
+	"name": "CopyBlobToAzureSQLDB",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GameStoreDataJan2016",
+						"type": "DatasetReference"
+					},
+					"name": "BlobGameStore"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureGameDatabase",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SelectedColumnsFromSource"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> BlobGameStore\nBlobGameStore select(mapColumn(\n\t\tPlayerName = Player,\n\t\tTimeSpend = Time\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectedColumnsFromSource\nSelectedColumnsFromSource sink(input(\n\t\tId as integer,\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tPlayer = PlayerName,\n\t\tTime = TimeSpend\n\t)) ~> sink1"
+		}
+	}
+}
