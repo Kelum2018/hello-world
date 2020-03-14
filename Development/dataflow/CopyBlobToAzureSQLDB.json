@@ -26,7 +26,7 @@
 					"name": "SelectedColumnsFromSource"
 				}
 			],
-			"script": "source(output(\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> BlobGameStore\nBlobGameStore select(mapColumn(\n\t\tPlayer,\n\t\tTime,\n\t\tPoints\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectedColumnsFromSource\nSelectedColumnsFromSource sink(input(\n\t\tId as integer,\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tPlayer = PlayerName,\n\t\tTime = TimeSpend\n\t)) ~> AzureDBGameStore"
+			"script": "source(output(\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> BlobGameStore\nBlobGameStore select(mapColumn(\n\t\tPlayer,\n\t\tTime,\n\t\tPoints\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectedColumnsFromSource\nSelectedColumnsFromSource sink(input(\n\t\tId as integer,\n\t\tPlayer as string,\n\t\tTime as string,\n\t\tPoints as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tPlayer,\n\t\tTime,\n\t\tPoints\n\t)) ~> AzureDBGameStore"
 		}
 	}
 }
