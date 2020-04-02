@@ -12,9 +12,17 @@
 					"name": "ADFTestDataAzureBLOB"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ADFTestData",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> ADFTestDataAzureBLOB"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> ADFTestDataAzureBLOB\nADFTestDataAzureBLOB sink(input(\n\t\tTestID as integer,\n\t\tDate as date,\n\t\tCount as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }

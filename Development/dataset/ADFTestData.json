@@ -1,0 +1,31 @@
+{
+	"name": "ADFTestData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TestID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "Count",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ADFTestData"
+		}
+	}
+}
