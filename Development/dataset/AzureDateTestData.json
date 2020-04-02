@@ -1,0 +1,24 @@
+{
+	"name": "AzureDateTestData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "01.csv",
+				"folderPath": "Test Data/Jan/01",
+				"container": "test-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
