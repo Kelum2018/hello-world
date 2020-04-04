@@ -30,7 +30,27 @@
 					},
 					"enableStaging": false,
 					"translator": {
-						"type": "TabularTranslator"
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Date",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Date"
+								}
+							},
+							{
+								"source": {
+									"name": "Count",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "Count"
+								}
+							}
+						]
 					}
 				},
 				"inputs": [
