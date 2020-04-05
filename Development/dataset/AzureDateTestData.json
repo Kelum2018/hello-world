@@ -5,18 +5,11 @@
 			"referenceName": "AzureBlobStorage3",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"filename": {
-				"type": "string",
-				"defaultValue": "01"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "{filename}.csv",
 				"folderPath": "Test Data/Jan/01",
 				"container": "test-data"
 			},
