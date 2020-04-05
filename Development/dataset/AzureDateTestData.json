@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"filenam": {
+			"filename": {
 				"type": "string",
 				"defaultValue": "01"
 			}
@@ -16,7 +16,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "01.csv",
+				"fileName": "{filename}.csv",
 				"folderPath": "Test Data/Jan/01",
 				"container": "test-data"
 			},
